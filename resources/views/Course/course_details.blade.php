@@ -2,7 +2,7 @@
     <div class="container-course-details">
         <!-- Back Button -->
         <a href="{{ route('course.index') }}" class="back-button-course">Back to Course List</a>
-        <h1 class="course-details-title">{{ $coordinator->name }} </h1>
+        
 
         <!-- Course Profile Card -->
         <div class="course-profile">
@@ -77,8 +77,13 @@
                 <div class="course-action-cards-details">
                     <div class="course-action-card-details">
                         <div class="course-action-icon-details">📋</div>
-                        <div class="course-action-label-details">Syllabus</div>
-                        <a href="#" class="course-action-value-details">View Syllabus</a>
+                        <div class="course-action-label-details">Outline</div>
+                        <a href="{{ asset('storage/Course/Outline/' . $course->course_code . '_outline.pdf') }}" 
+                        target="_blank" 
+                        class="course-action-value-details">
+                        View Outline
+                        </a>
+
                     </div>
                     @if($coordinator)
                     <div class="course-action-card-details">
@@ -90,7 +95,7 @@
                     <div class="course-action-card-details">
                         <div class="course-action-icon-details">📅</div>
                         <div class="course-action-label-details">Schedule</div>
-                        <a href="#" class="course-action-value-details">View Schedule</a>
+                       <a href="{{ route('course.schedule', $course->course_code) }}" class="course-action-value-details">View Schedule</a>
                     </div>
                 </div>
             </div>

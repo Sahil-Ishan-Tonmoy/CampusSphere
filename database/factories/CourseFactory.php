@@ -16,15 +16,27 @@ class CourseFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-    {
+    {   
+
+        $departments = ['CSE', 'MNS', 'ECE', 'EEE', 'BBA'];
+        $department = $this->faker->randomElement($departments);
+        $courseCodePrefix = match ($department) {
+            'CSE' => 'CSE',
+            'MNS' => 'MNS',
+            'ECE' => 'ECE',
+            'EEE' => 'EEE',
+            'BBA' => 'BBA',
+            default => 'GEN'
+        };
+
         return [
             'course_name' => $this->faker->unique()->sentence(3),
             'course_code' => $this->faker->unique()
-                                ->bothify($this->faker->randomElement(['CSE', 'MNS', 'ECE', 'EEE', 'BBA']) . '-' . $this->faker->numberBetween(100, 500)),
+                                ->bothify($courseCodePrefix . '-' . $this->faker->numberBetween(100, 500)),
             'description' => $this->faker->paragraph(),
             'credit' =>3,
             'co-ordinator_id' => Faculty::inRandomOrder()->first()->id,
-            'department' => $this->faker->randomElement(['CSE', 'MNS', 'ECE', 'EEE', 'BBA']),
+            'department' => $department,
 
 
         ];

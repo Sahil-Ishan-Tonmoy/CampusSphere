@@ -8,25 +8,35 @@ use Illuminate\Http\Request;
 
 class Faculty_Controller extends Controller
 {
-    public function index()
+    // In your FacultyController
+public function index(Request $request)
 {
-    $faculties = Faculty::orderBy('name', 'asc')->paginate(9);
-
-    $Departments = Faculty::select('department')->distinct()->pluck('department')->toArray();
-
+    $query = Faculty::query();
     
-    if (empty($Departments)) {
-        $Departments = ['No departments found.'];
+    // Apply search filters
+    if ($request->filled('search')) {
+        $search = $request->search;
+        $query->where(function($q) use ($search) {
+            $q->where('name', 'like', "%{$search}%")
+              ->orWhere('email', 'like', "%{$search}%")
+              ->orWhere('faculty_id', 'like', "%{$search}%")
+              ->orWhere('initial', 'like', "%{$search}%")
+              ->orWhere('designation', 'like', "%{$search}%");
+        });
     }
-
-    if ($faculties->isEmpty()) {
-        return view('Faculty.faculty_list', [
-            'message' => 'No faculty members found.',
-            'Departments' => $Departments
-        ]);
+    
+    // Apply department filter
+    if ($request->filled('department')) {
+        $query->where('department', $request->department);
     }
-
-    return view('Faculty.faculty_list', [
+    
+    // Get paginated results
+    $faculties = $query->paginate(9)->withQueryString();
+    
+    // Get departments for filter
+    $Departments = Faculty::distinct()->pluck('department');
+    
+   return view('Faculty.faculty_list', [
         'faculties' => $faculties,
         'Departments' => $Departments
     ]);

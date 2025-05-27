@@ -18,8 +18,23 @@ class Faculty extends Model
         'profile_picture',
         'initial'
     ];
+    
 
 
     /** @use HasFactory<\Database\Factories\FacultyFactory> */
     use HasFactory;
+
+    // Define the relationship with Course
+    public function courses()
+    {
+        return $this->hasMany(Course::class, 'co-ordinator_id', 'id');
+    }
+
+    // Define the relationship with Section
+    public function sections()
+    {
+        return $this->hasMany(Section::class, 'faculty_id', 'id');
+    }
+    
+
 }

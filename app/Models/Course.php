@@ -22,4 +22,10 @@ class Course extends Model
     {
         return $this->belongsTo(Faculty::class, 'co-ordinator_id', 'id');
     }
+    // Define the relationship with Section
+    public function sections()
+    {
+        return $this->hasMany(Section::class, 'course_code', 'course_code');
+    }
+
 }
