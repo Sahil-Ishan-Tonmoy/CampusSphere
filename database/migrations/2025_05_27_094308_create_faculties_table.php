@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('department');
             $table->string('faculty_id')->unique();
             $table->string('email')->unique();
+            $table->string('initial')->unique();
             $table->string('phone')->nullable();
             $table->text('bio')->nullable();
             $table->string('profile_picture')->nullable();

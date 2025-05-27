@@ -9,14 +9,29 @@ use Illuminate\Http\Request;
 class Faculty_Controller extends Controller
 {
     public function index()
-    {
-        // Logic to retrieve and display all faculty members
-        $faculties= Faculty::orderBy('name', 'asc')->get();
-        if ($faculties->isEmpty()) {
-            return view('Faculty.faculty_list', ['message' => 'No faculty members found.']);
-        }
-        return view('Faculty.faculty_list', ['faculties' => $faculties]);
+{
+    $faculties = Faculty::orderBy('name', 'asc')->paginate(9);
+
+    $Departments = Faculty::select('department')->distinct()->pluck('department')->toArray();
+
+    
+    if (empty($Departments)) {
+        $Departments = ['No departments found.'];
     }
+
+    if ($faculties->isEmpty()) {
+        return view('Faculty.faculty_list', [
+            'message' => 'No faculty members found.',
+            'Departments' => $Departments
+        ]);
+    }
+
+    return view('Faculty.faculty_list', [
+        'faculties' => $faculties,
+        'Departments' => $Departments
+    ]);
+}
+
     public function show($id)
     {
         $faculty = Faculty::where('faculty_id', $id)->first();

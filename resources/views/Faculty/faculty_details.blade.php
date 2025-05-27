@@ -28,6 +28,7 @@
                     <!-- Contact Information -->
                     <div class="info-section-details">
                         <h2 class="section-title-details">Contact Information</h2>
+                        
                         <div class="info-item-details">
                             <span class="info-label-details id">Faculty ID:</span>
                             <span class="info-value-details">{{ $faculty->faculty_id }}</span>
@@ -51,6 +52,10 @@
                     <!-- Professional Information -->
                     <div class="info-section-details">
                         <h2 class="section-title-details">Professional Details</h2>
+                        <div class="info-item-details">
+                            <span class="info-label-details initial">Faculty Initial:</span>
+                            <span class="info-value-details">{{ $faculty->initial }}</span>
+                        </div>
                         <div class="info-item-details">
                             <span class="info-label-details designation">Designation:</span>
                             <span class="info-value-details">{{ $faculty->designation }}</span>
@@ -90,11 +95,7 @@
                         <a href="tel:{{ $faculty->phone }}" class="contact-value-details">Call Now</a>
                     </div>
                     @endif
-                    <div class="contact-card-details">
-                        <div class="contact-icon-details">🏢</div>
-                        <div class="contact-label-details">Office</div>
-                        <div class="contact-value-details">Contact for office hours</div>
-                    </div>
+                    
                 </div>
             </div>
         </div>

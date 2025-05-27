@@ -20,6 +20,7 @@ class FacultyFactory extends Factory
            
                 'name' => fake()->name(), 
                 'faculty_id' => fake()->unique()->numerify('FAC-######'),
+                'initial' => fake()->unique()->lexify('???'),
                 'email' => fake()->unique()->safeEmail(),
                 'designation' => $this->faker->randomElement(['Professor', 'Senior Lecturer', 'Assistant Professor', 'Lecturer']),
                 'department' => $this->faker->randomElement(['CSE', 'MNS', 'ECE', 'EEE', 'BBA']),

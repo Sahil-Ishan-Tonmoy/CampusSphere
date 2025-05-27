@@ -4,15 +4,17 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Faculty;
+use App\Models\Course;
 
-class FacultySeeder extends Seeder
+class CourseSeeder extends Seeder
 {
-    
+    /**
+     * Run the database seeds.
+     */
     public function run(): void
     {
-        Faculty::factory()
-            ->count(30) 
+        Course::factory()
+            ->count(8) 
             ->create();
     }
 }

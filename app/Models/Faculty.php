@@ -16,6 +16,7 @@ class Faculty extends Model
         'phone',
         'bio',
         'profile_picture',
+        'initial'
     ];
 
 
