@@ -11,7 +11,7 @@
             <div class="stat-label">Total Faculty</div>
         </div>
         <div class="stat-card">
-            <div class="stat-number">{{ $faculties->pluck('Department')->unique()->count() }}</div>
+            <div class="stat-number">{{ $faculties->pluck('department')->unique()->count() }}</div>
             <div class="stat-label">Departments</div>
         </div>
         
@@ -26,7 +26,7 @@
         </div>
         <div class="filter-buttons">
             <button class="filter-btn active">All</button>
-            @foreach(collect($faculties)->pluck('Department')->unique() as $dept)
+            @foreach(collect($faculties)->pluck('department')->unique() as $dept)
                 <button class="filter-btn">{{ $dept }}</button>
             @endforeach
 
@@ -41,12 +41,12 @@
             <div class="faculty-card">
                 <div class="faculty-info">
                     <div class="faculty-department ">
-                        {{ $faculty['Department'] }}
+                        {{ $faculty['department'] }}
                     </div>
-                    <h3 class="faculty-name">{{ $faculty['Name'] }}</h3>
-                    <div class="faculty-id">Faculty ID: {{ $faculty['id'] }}</div>
+                    <h3 class="faculty-name">{{ $faculty['name'] }}</h3>
+                    <div class="faculty-id">Faculty ID: {{ $faculty['faculty_id'] }}</div>
                 </div>
-                <a href="/faculty_list/{{ $faculty['id'] }}" class="btn btn-primary">View Details</a>
+                <a href="/faculty_list/{{ $faculty['faculty_id'] }}" class="btn btn-primary">View Details</a>
             </div>
         </li>
         @endforeach
