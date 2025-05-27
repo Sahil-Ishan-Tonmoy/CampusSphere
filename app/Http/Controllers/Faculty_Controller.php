@@ -15,12 +15,19 @@ class Faculty_Controller extends Controller
         if ($faculties->isEmpty()) {
             return view('Faculty.faculty_list', ['message' => 'No faculty members found.']);
         }
-        return view('Faculty.faculty_list',["faculties"=>$faculties]);
+        return view('Faculty.faculty_list', ['faculties' => $faculties]);
     }
     public function show($id)
     {
-        // Logic to retrieve and display a specific faculty member by ID
+        $faculty = Faculty::where('faculty_id', $id)->first();
+
+        if (!$faculty) {
+            return redirect()->route('/faculty_list')->with('error', 'Faculty member not found.');
+        }
+
+        return view('Faculty.faculty_details', ['faculty' => $faculty]);
     }
+
     public function create()
     {
         // Logic to show a form for creating a new faculty member

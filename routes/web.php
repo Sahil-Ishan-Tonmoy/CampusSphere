@@ -7,9 +7,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/faculty_list', [Faculty_Controller::class, 'index'])->name('faculty_list');
+Route::get('/faculty', [Faculty_Controller::class, 'index'])->name('faculty.index');
 
-Route::get('/faculty_list/{id}', function ($id) {
-   
-    return view('Faculty.faculty_details',["id"=>$id]);
-});
+Route::get('/faculty/{id}', [Faculty_Controller::class, 'show'])->name('faculty.show');

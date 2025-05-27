@@ -46,7 +46,7 @@
                     <h3 class="faculty-name">{{ $faculty['name'] }}</h3>
                     <div class="faculty-id">Faculty ID: {{ $faculty['faculty_id'] }}</div>
                 </div>
-                <a href="/faculty_list/{{ $faculty['faculty_id'] }}" class="btn btn-primary">View Details</a>
+                <a href="/faculty/{{ $faculty['faculty_id'] }}" class="btn btn-primary">View Details</a>
             </div>
         </li>
         @endforeach

@@ -21,7 +21,7 @@
                     <a href="/" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/faculty_list" class="nav-link {{ request()->is('faculty_list') ? 'active' : '' }}">Faculty List</a>
+                    <a href="/faculty" class="nav-link {{ request()->is('faculty') ? 'active' : '' }}">Faculty List</a>
                 </li>
                 <!-- Add more navigation items as needed -->
             </ul>
