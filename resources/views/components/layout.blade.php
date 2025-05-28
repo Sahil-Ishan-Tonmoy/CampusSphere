@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>CampusSphere</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -25,6 +26,10 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('course.index')}}" class="nav-link {{ request()->is('course') ? 'active' : '' }}">Course List</a>
+                </li>
+
+                <li class="nav-item">
+                    <x-invite-button :inviteUrl="url()->current()" />
                 </li>
                 <!-- Add more navigation items as needed -->
             </ul>
