@@ -17,7 +17,13 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->name(),
+            'department' => fake()->randomElement(['CSE', 'MNS', 'ECE', 'EEE', 'BBA']),
+            'student_id' => fake()->unique()->numerify('S#####'),
+            'email' => fake()->unique()->safeEmail(),
+            'phone' => fake()->optional()->phoneNumber(),
+            'profile_picture' => fake()->optional()->imageUrl(640, 480, 'people'),
+            'courses' => json_encode(fake()->words(3)), // Example of courses as a JSON array
         ];
     }
 }

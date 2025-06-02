@@ -5,6 +5,7 @@ use App\Http\Controllers\Faculty_Controller;
 use App\Http\Controllers\Course_Controller;
 use App\Http\Controllers\User_Controller;
 use App\Http\Controllers\InviteController;
+use App\Http\Controllers\Student_Controller;
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,6 +14,10 @@ Route::get('/', function () {
 Route::get('/faculty', [Faculty_Controller::class, 'index'])->name('faculty.index');
 
 Route::get('/faculty/{id}', [Faculty_Controller::class, 'show'])->name('faculty.show');
+
+Route::get('/student', [Student_Controller::class, 'index'])->name('student.index');
+
+Route::get('/student/{id}', [Student_Controller::class, 'show'])->name('student.show');
 
 Route::get('/course', [Course_Controller::class, 'index'])->name('course.index');
 

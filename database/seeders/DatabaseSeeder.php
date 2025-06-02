@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             FacultySeeder::class,
             CourseSeeder::class,
             SectionSeeder::class,
+            StudentSeeder::class,
            
            
         ]);

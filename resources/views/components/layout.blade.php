@@ -25,6 +25,9 @@
                     <a href="{{ route('faculty.index')}}" class="nav-link {{ request()->is('faculty') ? 'active' : '' }}">Faculty List</a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('student.index')}}" class="nav-link {{ request()->is('student') ? 'active' : '' }}">Student List</a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('course.index')}}" class="nav-link {{ request()->is('course') ? 'active' : '' }}">Course List</a>
                 </li>
 
