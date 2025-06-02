@@ -73,6 +73,36 @@
                 </div>
                 @endif
 
+                <!-- Faculty Teaching This Course -->
+                @if($course->sections->isNotEmpty())
+                    <div class="course-faculty-showcase">
+                        <h2 class="section-title-details">
+                            Faculty Teaching This Course
+                            <span class="faculty-count-showcase">{{ $course->sections->whereNotNull('faculty')->count() }}</span>
+                        </h2>
+                        <ul class="faculty-list-showcase">
+                            @foreach ($course->sections as $section)
+                                @if($section->faculty)
+                                    <li class="faculty-item-showcase">
+                                        <a href="{{ route('faculty.show', $section->faculty->faculty_id) }}" class="faculty-link-showcase">
+                                            {{ $section->faculty->name ?? 'Faculty Name' }}
+                                            <span class="section-number-showcase">Section: {{ $section->section_number }}</span>
+                                        </a>
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
+                @else
+                    <div class="course-faculty-showcase">
+                        <h2 class="section-title-details">Faculty Teaching This Course</h2>
+                        <div class="faculty-empty-showcase">
+                            No faculty assigned to this course yet.
+                        </div>
+                    </div>
+                @endif
+
+
                 <!-- Quick Action Cards -->
                 <div class="course-action-cards-details">
                     <div class="course-action-card-details">

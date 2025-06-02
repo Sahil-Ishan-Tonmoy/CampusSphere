@@ -81,6 +81,35 @@
                 </div>
                 @endif
 
+                <!-- Course Section with New Styling -->
+                @if($faculty->sections->isNotEmpty())
+                    <div class="faculty-course-showcase">
+                        <h2 class="section-title-details">
+                            Sections Taught
+                            <span class="course-count-showcase">{{ $faculty->sections->count() }}</span>
+                        </h2>
+                        <ul class="course-list-showcase">
+                            @foreach ($faculty->sections as $section)
+                                <li class="course-item-showcase">
+                                    <a href="{{ route('course.show', $section->course->course_code) }}" class="course-link-showcase">         
+                                        <span class="course-code-showcase">({{ $section->course_code }})</span>
+                                        <span class="section-number-showcase">Section: {{ $section->section_number }}</span>
+                                        
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @else
+                    <div class="faculty-course-showcase">
+                        <h2 class="section-title-details">Sections Taught</h2>
+                        <div class="course-empty-showcase">
+                            No sections assigned to this faculty member.
+                        </div>
+                    </div>
+                @endif
+
+
                 <!-- Quick Contact Cards -->
                 <div class="contact-cards-details">
                     <div class="contact-card-details">

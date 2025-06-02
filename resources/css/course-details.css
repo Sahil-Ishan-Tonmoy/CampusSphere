@@ -206,7 +206,7 @@
   background: #f8fafc;
   padding: 25px;
   border-radius: 15px;
-  border-left: 4px solid #48bb78;
+  border-left: 4px solid #7060bf;
   margin-bottom: 30px;
 }
 
@@ -379,4 +379,218 @@
   .course-info-value-details {
     font-size: 0.85rem;
   }
+}
+
+
+/* ===== COURSE FACULTY SECTION STYLES ===== */
+
+.course-faculty-showcase {
+  background: #f8fafc;
+  padding: 30px;
+  border-radius: 15px;
+  border-left: 4px solid #b02bd9;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.course-faculty-showcase::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  border-radius: 0 3px 3px 0;
+}
+
+.course-faculty-showcase .section-title-details {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 15px;
+}
+
+.course-faculty-showcase .section-title-details::before {
+  margin-right: 12px;
+  font-size: 1.2rem;
+}
+
+.course-faculty-showcase .section-title-details::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 15px;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #b02bd9, #9333ea);
+  border-radius: 2px;
+}
+
+/* Faculty List Styles */
+.faculty-list-showcase {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.faculty-item-showcase {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(176, 43, 217, 0.1);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.faculty-item-showcase::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #b02bd9, #9333ea);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+}
+
+.faculty-item-showcase:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(176, 43, 217, 0.2);
+  border-color: #b02bd9;
+}
+
+.faculty-item-showcase:hover::before {
+  transform: scaleY(1);
+}
+
+.faculty-link-showcase {
+  text-decoration: none;
+  color: #2d3748;
+  display: block;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+  position: relative;
+  padding-left: 15px;
+}
+
+.faculty-link-showcase:hover {
+  color: #b02bd9;
+}
+
+.section-number-showcase {
+  display: block;
+  font-size: 0.9rem;
+  color: #718096;
+  margin-top: 4px;
+}
+
+.faculty-dept-showcase {
+  font-size: 0.85rem;
+  color: #4a5568;
+  display: block;
+  margin-top: 4px;
+}
+
+/* Empty State */
+.faculty-empty-showcase {
+  text-align: center;
+  padding: 40px 20px;
+  color: #718096;
+  font-style: italic;
+}
+
+.faculty-empty-showcase::before {
+  content: "🎓";
+  display: block;
+  font-size: 3rem;
+  margin-bottom: 15px;
+  opacity: 0.5;
+}
+
+/* Faculty Count Badge */
+.faculty-count-showcase {
+  display: inline-flex;
+  align-items: center;
+  background: #b02bd9;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-left: 10px;
+  box-shadow: 0 2px 8px rgba(176, 43, 217, 0.3);
+}
+
+.faculty-count-showcase::before {
+  content: "👥";
+  margin-right: 6px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .faculty-list-showcase {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .course-faculty-showcase {
+    padding: 20px;
+    margin-top: 15px;
+  }
+
+  .faculty-item-showcase {
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .course-faculty-showcase .section-title-details {
+    font-size: 1.2rem;
+    padding-left: 10px;
+  }
+
+  .faculty-link-showcase {
+    font-size: 1rem;
+    padding-left: 12px;
+  }
+}
+
+/* Animation */
+@keyframes facultySlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.faculty-item-showcase {
+  animation: facultySlideIn 0.5s ease forwards;
+}
+
+.faculty-item-showcase:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.faculty-item-showcase:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.faculty-item-showcase:nth-child(4) {
+  animation-delay: 0.3s;
 }
