@@ -1,0 +1,517 @@
+/* QR Invite Generator Styles */
+.qr-invite-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.qr-invite-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: white;
+}
+
+.qr-invite-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.qr-invite-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.qr-invite-form-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+}
+
+.qr-invite-input-group {
+  margin-bottom: 1.5rem;
+}
+
+.qr-invite-label {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.qr-invite-input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.qr-invite-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.qr-invite-generate-btn {
+  width: 100%;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.qr-invite-generate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.qr-invite-generate-btn:active {
+  transform: translateY(0);
+}
+
+.qr-invite-results {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+}
+
+.qr-invite-section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #f3f4f6;
+}
+
+.qr-invite-qr-section {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.qr-invite-qr-display {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  min-height: 200px;
+  align-items: center;
+}
+
+.qr-invite-download-btn {
+  padding: 0.75rem 1.5rem;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.qr-invite-download-btn:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.qr-invite-link-section {
+  margin-bottom: 2rem;
+}
+
+.qr-invite-link-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.qr-invite-share-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background: #f9fafb;
+}
+
+.qr-invite-copy-btn {
+  padding: 0.75rem 1.5rem;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.qr-invite-copy-btn:hover {
+  background: #2563eb;
+}
+
+.qr-invite-copy-feedback {
+  font-size: 0.8rem;
+  padding: 0.25rem 0;
+  min-height: 1rem;
+}
+
+.qr-invite-copy-feedback.qr-invite-success {
+  color: #10b981;
+}
+
+.qr-invite-copy-feedback.qr-invite-error {
+  color: #ef4444;
+}
+
+/* Loading Animation */
+.qr-invite-loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: qr-invite-spin 1s ease-in-out infinite;
+}
+
+@keyframes qr-invite-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Invite Button Styles */
+.invite-btn-container {
+  display: inline-block;
+}
+
+.invite-btn-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.invite-btn-main:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.invite-btn-main:active {
+  transform: translateY(0);
+}
+
+.invite-btn-icon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+}
+
+/* Popup Overlay */
+.invite-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: invite-popup-fade-in 0.3s ease;
+}
+
+@keyframes invite-popup-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.invite-popup-container {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 480px;
+  width: 90%;
+  max-height: 90vh;
+  overflow: hidden;
+  animation: invite-popup-slide-up 0.3s ease;
+}
+
+@keyframes invite-popup-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.invite-popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.invite-popup-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.invite-popup-close {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.invite-popup-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.invite-popup-close svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+}
+
+.invite-popup-content {
+  padding: 2rem;
+}
+
+.invite-popup-qr-section {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.invite-popup-qr-display {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #d1d5db;
+}
+
+.invite-popup-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: #6b7280;
+}
+
+.invite-popup-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e5e7eb;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: invite-popup-spin 1s linear infinite;
+}
+
+@keyframes invite-popup-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.invite-popup-qr-display img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.invite-popup-share-section {
+  margin-top: 1.5rem;
+}
+
+.invite-popup-link-container {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.invite-popup-share-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: #f9fafb;
+  color: #374151;
+  transition: all 0.3s ease;
+}
+
+.invite-popup-share-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.invite-popup-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.invite-popup-copy-btn:hover:not(:disabled) {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.invite-popup-copy-btn:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.invite-popup-copy-icon {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+}
+
+.invite-popup-copy-feedback {
+  font-size: 0.85rem;
+  padding: 0.5rem 0;
+  min-height: 1.5rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.invite-popup-copy-feedback.invite-popup-success {
+  color: #10b981;
+}
+
+.invite-popup-copy-feedback.invite-popup-error {
+  color: #ef4444;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .qr-invite-container {
+    padding: 1rem;
+  }
+
+  .qr-invite-title {
+    font-size: 2rem;
+  }
+
+  .qr-invite-form-section,
+  .qr-invite-results {
+    padding: 1.5rem;
+  }
+
+  .qr-invite-link-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .invite-popup-container {
+    width: 95%;
+    margin: 1rem;
+  }
+
+  .invite-popup-content {
+    padding: 1.5rem;
+  }
+
+  .invite-popup-qr-display {
+    min-height: 250px;
+    padding: 1rem;
+  }
+
+  .invite-popup-link-container {
+    flex-direction: column;
+  }
+
+  .invite-btn-main {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Success Animation */
+.invite-popup-success-animation {
+  animation: invite-popup-success-pulse 0.6s ease;
+}
+
+@keyframes invite-popup-success-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

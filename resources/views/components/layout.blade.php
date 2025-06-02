@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +7,6 @@
     <title>CampusSphere</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    
 </head>
 <body>
     <header>
@@ -45,10 +45,29 @@
         </div>
     </nav>
 </header>
-    <main class= "container">
+    <main class="container">
         {{ $slot }}
-
     </main>
     
+    <script>
+        // Toggle mobile menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function() {
+                    navToggle.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Initialize results info display if search or filter is active
+            const resultsInfo = document.querySelector('.results-info');
+            if (resultsInfo && (window.location.search.includes('search=') || window.location.search.includes('department='))) {
+                resultsInfo.classList.add('show');
+            }
+        });
+    </script>
 </body>
 </html>

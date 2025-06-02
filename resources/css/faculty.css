@@ -1,0 +1,99 @@
+/* Faculty Grid Styles */
+.faculty-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+  list-style: none;
+  padding: 0;
+}
+
+/* Faculty Card Styles */
+.faculty-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.faculty-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.faculty-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.faculty-card.cse-department::before {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+}
+
+.faculty-card.cse-department {
+  border-left: 4px solid #48bb78;
+}
+
+/* Faculty Info Styles */
+.faculty-info {
+  margin-bottom: 20px;
+}
+
+.faculty-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.faculty-name::before {
+  content: "👨‍🏫";
+  margin-right: 10px;
+  font-size: 1.1rem;
+}
+
+.faculty-department {
+  display: inline-block;
+  background: #edf2f7;
+  color: #4a5568;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.faculty-department.cse {
+  background: #c6f6d5;
+  color: #22543d;
+}
+
+.faculty-id {
+  font-size: 0.9rem;
+  color: #718096;
+  font-family: "Courier New", monospace;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .faculty-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .faculty-card {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,296 @@
+/* Pagination Styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+  gap: 8px;
+}
+
+/* Laravel pagination wrapper */
+.pagination nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Pagination list */
+.pagination .flex {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Individual pagination items */
+.pagination .relative {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 8px 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  background: white;
+  color: #4a5568;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover state */
+.pagination .relative:hover {
+  border-color: #667eea;
+  background: #f7fafc;
+  color: #667eea;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+}
+
+/* Active/Current page */
+.pagination .relative[aria-current="page"] {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.pagination .relative[aria-current="page"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}
+
+/* Disabled state */
+.pagination .relative[aria-disabled="true"] {
+  background: #f7fafc;
+  border-color: #e2e8f0;
+  color: #a0aec0;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.pagination .relative[aria-disabled="true"]:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: #e2e8f0;
+  background: #f7fafc;
+  color: #a0aec0;
+}
+
+/* Previous/Next buttons */
+.pagination .relative:first-child,
+.pagination .relative:last-child {
+  padding: 8px 16px;
+  font-weight: 600;
+}
+
+/* Previous button */
+.pagination .relative:first-child::before {
+  content: "←";
+  margin-right: 6px;
+  font-size: 1.1rem;
+}
+
+/* Next button */
+.pagination .relative:last-child::after {
+  content: "→";
+  margin-left: 6px;
+  font-size: 1.1rem;
+}
+
+/* Ellipsis (...) styling */
+.pagination .relative span {
+  color: #a0aec0;
+  font-weight: 500;
+}
+
+/* Results info text */
+.pagination p {
+  color: #718096;
+  font-size: 0.9rem;
+  margin: 0 20px;
+  white-space: nowrap;
+}
+
+/* Current Page Stat Card in Pagination */
+.pagination .stat-card {
+  background: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border: 2px solid #667eea;
+  margin-left: 20px;
+  min-width: 120px;
+}
+
+.pagination .stat-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #667eea;
+  margin-bottom: 2px;
+}
+
+.pagination .stat-label {
+  color: #4a5568;
+  font-size: 0.8rem;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+/* Compact pagination info */
+.pagination-compact-info {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  color: #4a5568;
+  font-size: 0.85rem;
+}
+
+.pagination-compact-info .current-page {
+  color: #667eea;
+  font-weight: 600;
+  margin: 0 4px;
+}
+
+/* Alternative compact pagination style */
+.pagination-compact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 0;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.pagination-compact .pagination-prev,
+.pagination-compact .pagination-next {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.pagination-compact .pagination-prev:hover,
+.pagination-compact .pagination-next:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.pagination-compact .pagination-prev[aria-disabled="true"],
+.pagination-compact .pagination-next[aria-disabled="true"] {
+  background: #e2e8f0;
+  color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.pagination-compact .pagination-info {
+  font-weight: 500;
+  color: #4a5568;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .pagination {
+    margin: 30px 0;
+    gap: 4px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pagination nav {
+    gap: 4px;
+    order: 1;
+  }
+
+  .pagination .flex {
+    gap: 4px;
+  }
+
+  .pagination .relative {
+    min-width: 36px;
+    height: 36px;
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+
+  .pagination .relative:first-child,
+  .pagination .relative:last-child {
+    padding: 6px 12px;
+  }
+
+  /* Hide page numbers on very small screens, keep only prev/next */
+  .pagination .relative:not(:first-child):not(:last-child) {
+    display: none;
+  }
+
+  .pagination .relative:nth-child(2),
+  .pagination .relative:nth-last-child(2) {
+    display: inline-flex;
+  }
+
+  /* Show current page */
+  .pagination .relative[aria-current="page"] {
+    display: inline-flex !important;
+  }
+
+  .pagination p {
+    order: 2;
+    margin: 10px 0 0 0;
+    text-align: center;
+  }
+
+  .pagination-compact-info {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pagination {
+    gap: 15px;
+  }
+
+  .pagination p {
+    text-align: center;
+  }
+
+  /* Show only prev, current, next on mobile */
+  .pagination .relative:not(:first-child):not(:last-child):not([aria-current="page"]) {
+    display: none;
+  }
+}
+
+/* Loading state for pagination */
+.pagination.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.pagination.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
