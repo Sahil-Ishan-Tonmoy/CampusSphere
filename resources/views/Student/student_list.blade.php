@@ -21,67 +21,14 @@
         </div>
     </div>
 
-    <!-- Search and Filter Controls -->
-    <div class="controls-section">
-        <form method="GET" action="{{ route('student.index') }}" class="search-filter-form">
-            <div class="search-box">
-                <input type="text" 
-                    name="search" 
-                    class="search-input" 
-                    placeholder="Search students by name, ID, department or email..."
-                    value="{{ request('search') }}">
-                <span class="search-icon">🔍</span>
-            </div>
-            <div class="filter-buttons">
-                <button type="submit" 
-                        name="department" 
-                        value="" 
-                        class="filter-btn {{ !request('department') ? 'active' : '' }}">
-                    All
-                </button>
-                @foreach($departments as $department)
-                    <button type="submit" 
-                            name="department" 
-                            value="{{ $department }}"
-                            class="filter-btn {{ request('department') === $department ? 'active' : '' }}">
-                        {{ $department }}
-                    </button>
-                @endforeach
-            </div>
-            
-            <!-- Hidden field to preserve search when filtering -->
-            @if(request('search'))
-                <input type="hidden" name="search" value="{{ request('search') }}">
-            @endif
-        </form>
-    </div>
+    <x-search-filter 
+        route="student.index"
+        searchPlaceholder="Search students by name, ID, department or email..."
+        :departments="$departments"
+        :results="$students"
+        entityName="students"
+    />
 
-    <!-- Results Info (hidden by default, shown conditionally) -->
-    <div class="results-info" data-results-count="{{ $students->total() }}">
-        <p class="results-text">
-            @if($students->total() > 0)
-                Showing {{ $students->firstItem() }} to {{ $students->lastItem() }} 
-                of {{ $students->total() }} students
-                @if(request('search'))
-                    for "<strong>{{ request('search') }}</strong>"
-                @endif
-                @if(request('department'))
-                    in <strong>{{ request('department') }}</strong> department
-                @endif
-            @else
-                No students found
-                @if(request('search') || request('department'))
-                    for your search criteria
-                @endif
-            @endif
-        </p>
-        
-        @if(request('search') || request('department'))
-            <a href="{{ route('student.index') }}" class="clear-filters">
-                Clear all filters
-            </a>
-        @endif
-    </div>
 
     @if($students->isEmpty())
         <div class="empty-state">
@@ -118,13 +65,17 @@
                         </div>
                         <h3 class="student-name">{{ $student->name }}</h3>
                         <div class="student-id">ID: {{ $student->student_id }}</div>
-                        <div class="student-courses">
+                       <div class="student-courses">
                             @if($student->courses)
-                                <span class="course-count">{{ count(json_decode($student->courses)) }} Courses</span>
+                                @php
+                                    $courses = json_decode($student->courses, true); // decode as array
+                                @endphp
+                                <span class="course-count">{{ count($courses) }} Courses</span>
                             @else
                                 <span class="course-count">No Courses</span>
                             @endif
                         </div>
+
                     </div>
                     <div class="student-actions">
                         <a href="{{ route('student.show', $student->student_id) }}" class="btn-student-details">

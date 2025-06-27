@@ -21,7 +21,8 @@ public function index(Request $request)
               ->orWhere('email', 'like', "%{$search}%")
               ->orWhere('faculty_id', 'like', "%{$search}%")
               ->orWhere('initial', 'like', "%{$search}%")
-              ->orWhere('designation', 'like', "%{$search}%");
+              ->orWhere('designation', 'like', "%{$search}%")
+              ->orWhere('department', 'like', "%{$search}%");
         });
     }
     

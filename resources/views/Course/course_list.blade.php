@@ -17,65 +17,14 @@
     
 </div>
 
-<!-- Search and Filter Controls -->
-<div class="controls-section">
-    <form method="GET" action="{{ route('course.index') }}" class="search-filter-form">
-        <div class="search-box">
-            <input type="text" 
-                   name="search" 
-                   class="search-input" 
-                   placeholder="Search courses by name, code, or department..."
-                   value="{{ request('search') }}">
-            <span class="search-icon">🔍</span>
-        </div>
-        <div class="filter-buttons">
-            <button type="submit" 
-                    name="department" 
-                    value="" 
-                    class="filter-btn {{ !request('department') ? 'active' : '' }}">
-                All
-            </button>
-            @foreach($Departments as $Department)
-                <button type="submit" 
-                        name="department" 
-                        value="{{ $Department }}"
-                        class="filter-btn {{ request('department') === $Department ? 'active' : '' }}">
-                    {{ $Department }}
-                </button>
-            @endforeach
-        </div>
-        
-        <!-- Hidden field to preserve search when filtering -->
-        @if(request('search'))
-            <input type="hidden" name="search" value="{{ request('search') }}">
-        @endif
-    </form>
-</div>
+<x-search-filter 
+    route="course.index"
+    searchPlaceholder="Search courses by name, code, or department..."
+    :departments="$Departments"
+    :results="$courses"
+    entityName="courses"
+/>
 
-<!-- Results Info -->
-<div class="results-info">
-    <p class="results-text">
-        @if($courses->total() > 0)
-            @if(request('search'))
-                for "<strong>{{ request('search') }}</strong>"
-            @endif
-            @if(request('department'))
-                in <strong>{{ request('department') }}</strong> department
-            @endif
-        @else
-            No courses found
-            @if(request('search') || request('department'))
-                for your search criteria
-            @endif
-        @endif
-    </p>
-    
-    @if(request('search') || request('department'))
-        <a href="{{ route('course.index') }}" class="clear-filters">
-            Clear all filters
-        </a>
-    @endif
-</div>
 
 @if($courses->isEmpty())
     <div class="empty-state">
